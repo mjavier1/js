@@ -1,2 +1,2 @@
-# js
+# JavaScript - The best scripting language
 Learning JavaScript. It will have many projects which will mainly use this language.
