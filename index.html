@@ -1,0 +1,65 @@
+<html>
+<body>
+<head>
+<title>Javascript Projects!</title>
+<meta name="author" content="Edwin Cosme, Marcos Aguirre">
+<meta charset="UTF-8">
+<meta name="description" content="Making many Javascript (JS) projects as possible">
+</head>
+<div id="name"></div>
+<div id="age"></div>
+<div id="skills"></div>
+<div id="projects"></div>
+<div id="github_repo"></div>
+<script>
+function getAge()
+{
+return 22;
+}
+
+function getSkills()
+{
+return ["Java"," Kotlin"];
+}
+
+function getProjectIdeas()
+{
+let projects = ["My portfolio", " Bots for Discord game chat"];
+return projects;
+}
+
+function main () 
+{
+var Person = {name:"Edwin Cosme Mercado", 
+              age: getAge(),
+              skills: getSkills(),
+	      currentDevs: getProjectIdeas()
+};
+
+let name = document.getElementById('name');
+let age = document.getElementById('age');
+let skills = document.getElementById('skills');
+let currentProjects = document.getElementById('projects');
+let a = document.createElement('a');
+let git = document.getElementById('github_repo');
+a.appendChild(document.createTextNode("Code"));
+a.title = "GitHub repo";
+a.href = "https://github.com/softiodev/js";
+
+name.appendChild(document.createTextNode("Name: " + Person.name));
+age.appendChild(document.createTextNode("Age: " +Person.age));
+skills.appendChild(document.createTextNode("Skills: " + Person.skills));
+currentProjects.appendChild(document.createTextNode("My current projects for Javascript: " + Person.currentDevs));
+git.appendChild(a);
+
+console.log("Name: "+ Person.name);
+console.log("Age: "+ Person.age);
+console.log("Skills: "+ Person.skills[1]);
+}
+
+main();
+
+</script>
+</body>
+</html>
+
