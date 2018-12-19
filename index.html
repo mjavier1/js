@@ -1,17 +1,35 @@
-<html>
+﻿<html>
 <body>
 <head>
 <title>Javascript Projects!</title>
 <meta name="author" content="Edwin Cosme, Marcos Aguirre">
 <meta charset="UTF-8">
 <meta name="description" content="Making many Javascript (JS) projects as possible">
+
+<style>
+span {
+display: block;
+
+}
+</style>
 </head>
-<div id="name"></div>
-<div id="age"></div>
-<div id="skills"></div>
-<div id="projects"></div>
-<div id="github_repo"></div>
+<header id="profile_img">
+</header>
+<div id="profile_description">
+<span id="name"></span>
+<span id="age"></span>
+<span id="skills"></span>
+<span id="projects"></span>
+</div>
+<footer id="github_repo"></footer>
+
 <script>
+var Person = {name:"Edwin Cosme Mercado", 
+              age: getAge(),
+              skills: getSkills(),
+	      currentDevs: getProjectIdeas()
+};
+
 function getAge()
 {
 return 22;
@@ -28,29 +46,43 @@ let projects = ["My portfolio", " Bots for Discord game chat"];
 return projects;
 }
 
-function main () 
+function setProfileImg()
 {
-var Person = {name:"Edwin Cosme Mercado", 
-              age: getAge(),
-              skills: getSkills(),
-	      currentDevs: getProjectIdeas()
-};
+// http://i.imgur.com/ckKgeP7.png
+let img = document.createElement('img');
+let header = document.getElementById('profile_img');
+img.src ="pfp.png";
+header.appendChild(img);
+}
 
+function setProfileDescription()
+{
 let name = document.getElementById('name');
 let age = document.getElementById('age');
 let skills = document.getElementById('skills');
 let currentProjects = document.getElementById('projects');
 let a = document.createElement('a');
-let git = document.getElementById('github_repo');
-a.appendChild(document.createTextNode("Code"));
-a.title = "GitHub repo";
+let repoLink = document.getElementById('github_repo');
+a.appendChild(document.createTextNode("Check out the code at GitHub!"));
+a.title = "⁬Github repository";
 a.href = "https://github.com/softiodev/js";
 
-name.appendChild(document.createTextNode("Name: " + Person.name));
-age.appendChild(document.createTextNode("Age: " +Person.age));
-skills.appendChild(document.createTextNode("Skills: " + Person.skills));
-currentProjects.appendChild(document.createTextNode("My current projects for Javascript: " + Person.currentDevs));
-git.appendChild(a);
+let nameNode = document.createTextNode("Name: " + Person.name);
+let ageNode = document.createTextNode("Age: " +Person.age);
+let skillsNode = document.createTextNode("Skills: " + Person.skills);
+let currentProjectsNode = document.createTextNode("My current projects for Javascript: " + Person.currentDevs);
+
+name.appendChild(nameNode);
+age.appendChild(ageNode);
+skills.appendChild(skillsNode);
+currentProjects.appendChild(currentProjectsNode);
+repoLink.appendChild(a);
+}
+
+function main () 
+{
+setProfileImg();
+setProfileDescription();
 
 console.log("Name: "+ Person.name);
 console.log("Age: "+ Person.age);
