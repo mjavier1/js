@@ -9,7 +9,14 @@
 <style>
 span {
 display: block;
+}
 
+div {
+border: 1px solid #cccccc;
+}
+
+footer {
+text-align:center;
 }
 </style>
 </head>
@@ -21,14 +28,52 @@ display: block;
 <span id="skills"></span>
 <span id="projects"></span>
 </div>
-<footer id="github_repo"></footer>
+<footer id="code"></footer>
 
 <script>
 var Person = {name:"Edwin Cosme Mercado", 
               age: getAge(),
               skills: getSkills(),
-	      currentDevs: getProjectIdeas()
+	      currentDevs: getProjectIdeas(),
+	      likes: getLikes()
+
 };
+
+function setWorkplaceIcons()
+{
+let dev_imgs = ['Discord-Logo-Color.svg', 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'];
+
+let a =  document.createElement('a');
+let gitAnchor =  document.createElement('a');
+
+let discordImg = document.createElement('img');
+let gitImg = document.createElement('img');
+
+let footer = document.getElementById('code');
+
+discordImg.src = dev_imgs[0];
+discordImg.width = 60;
+gitImg.src = dev_imgs[1];
+gitImg.width = 60;
+
+a.href = "https://discord.gg/DZECfdJ";
+a.alt = "Join me on Discord chat!";
+a.target = "top";
+gitAnchor.href = "https://github.com/softiodev/js";
+gitAnchor.alt = "See the code on GitHub!";
+gitAnchor.target = "top";
+
+a.appendChild(discordImg);
+gitAnchor.appendChild(gitImg);
+
+footer.appendChild(a);
+footer.appendChild(gitAnchor);
+}
+
+function getLikes()
+{
+
+}
 
 function getAge()
 {
@@ -37,7 +82,7 @@ return 22;
 
 function getSkills()
 {
-return ["Java"," Kotlin"];
+return ["Java"," Kotlin", " JavaScript", " HTML", " CSS", " C++", " C"];
 }
 
 function getProjectIdeas()
@@ -61,11 +106,6 @@ let name = document.getElementById('name');
 let age = document.getElementById('age');
 let skills = document.getElementById('skills');
 let currentProjects = document.getElementById('projects');
-let a = document.createElement('a');
-let repoLink = document.getElementById('github_repo');
-a.appendChild(document.createTextNode("Check out the code at GitHub!"));
-a.title = "⁬Github repository";
-a.href = "https://github.com/softiodev/js";
 
 let nameNode = document.createTextNode("Name: " + Person.name);
 let ageNode = document.createTextNode("Age: " +Person.age);
@@ -76,13 +116,15 @@ name.appendChild(nameNode);
 age.appendChild(ageNode);
 skills.appendChild(skillsNode);
 currentProjects.appendChild(currentProjectsNode);
-repoLink.appendChild(a);
+
 }
 
 function main () 
 {
 setProfileImg();
 setProfileDescription();
+setWorkplaceIcons();
+
 
 console.log("Name: "+ Person.name);
 console.log("Age: "+ Person.age);
