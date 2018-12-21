@@ -1,45 +1,96 @@
 <html>
-<head>
-<title>Profile</title>
-</head>
-<body>
-<div id ="profile_picture">
-<!-- Only the profile picture image here -->
-</div>
-<div id ="bio">
-<!-- Name, Birthday, Likes -->
-</div>
-<div id ="pl">
-<!-- All the programming languages that I currently know -->
-<footer id ="dev_comments">
-<!-- IDK what to place here -->
-</footer>
+	<head>
+		<title>Profile</title>
+	</head>
+	<style>
+		#bio span {
+			display: block;
+		}
+	</style>
+	<body>
+		<header id="site-img">
+		<!-- TODO Add the js png file image  -->
+		</header>
+		<div id ="profile_picture">
+		<!-- Only the profile picture image here -->
+		</div>
+		<div id ="bio">
+			<span id="name"></span>
+			<span id="dob"></span>
+			<span id="devLangs"></span>
+		<!-- Name, Birthday, Likes, All the programming languages that I currently know -->
+		</div>
+		<footer id="code"></footer>
+		
+		<script>
+			function main()
+			{
+				setProfileImg();
+				setBio();
+				setWorkPlace();
+			}
+		
+			function setProfileImg()
+			{
 
-<script>
+				//TODO Using array, cuz I wanna make it load random each time someone enters 
 
-function changeProfileImg()
-{
+				let imgRef = ['https://i.ytimg.com/vi/-sGiE10zNQM/maxresdefault.jpg', 'https://lh3.googleusercontent.com/i_U9Op1Nsfpgn43FwLSJ493laqJ56EYdDxY1vKQiq1eZ4LxiP9krGATarzs_6UjN4-Qgla8ium_Z9dhgcYmAo6fCqYRnBw4j6BFFj0ZjMTlZL3FDcAbZpMFqtSp4pojZEZd1nNKmCvfk8VzQ-8qCv3wJIx3tLI0zAyaYQkFogkXjIsllGDVed1tH-21x_XSqvZkYttyAdBW8ol3i1Q3HxzL1G0B9ff-mXAl3tgv8qAcYmottAArBwr2ww7KzddBgiAujirPeei1Iw4tF1tfU_Kb7bAajLuaIrn3-4vGKFCuKI86PVNZQ7aVcdWK0kFHq9vYlNhVe4IInAOuKgbIdY5T24cWshXB7LCF43Xbx-THeFILdaBQCOCkw1_NVc3OdynwgQ0ngBVAXo09sK3-f1TK6yW_5HyVbW-C-kUzTyYCv8uqR-G-s-BCjEE-49BMkDmJcxTgc0sYOw3EK_paMHAXRuDVQVmHLPr7Mv4C8tu6I7bisxWhHk68ty70sOkTexwa7wHUF2tQwxuciRPJjGBmg062ic7cJANyISF2TbtGCukUrCeoqaHBxgmxOI_Ibf41bG-SPx132yfspBk7L3VUXhgXNr2PnIuZ-h-p82fqzqzRahjRovnA3u2pG8gSGxizQpca4U_W_oLuThdI-_ki0=w876-h657-no'];  
+				let img = document.createElement('img');
+				let div = document.getElementById('profile_picture');
+				img.src = imgRef[1];
+				img.width = 200;
+				img.alt = "Profile Picture";
+				div.appendChild(img);
 
-//TODO Using array, cuz I wanna make it load random each time someone enters 
+			}
 
-let imgRef = ['https://i.ytimg.com/vi/-sGiE10zNQM/maxresdefault.jpg'];  
+			function setBio()
+			{
+				let info = ['Edwin Cosme Mercado', 'November 8, 1996', "Java, Kotlin, JavaScript, HTML, CSS, C++, C"];
+				let p = document.createElement('p');
+				let div = document.getElementById('bio');
+				let name = document.getElementById('name');
+				let dob = document.getElementById('dob');
+				let devLangs = document.getElementById('devLangs');
+				
+				name.innerHTML = "Name: " + info[0];
+				dob.innerHTML = "Date of Birth: " + info[1];
+				devLangs.innerHTML = "Skills: " + info[2];
+			}
+			
+			function setWorkPlace()
+			{
+				let dev_imgs = ['Discord-Logo-Color.svg', 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'];
 
-let img = document.createElement('img');
-let div = document.getElementById('profile_picture');
-img.src = imgRef[0];
-img.width = 200;
-div.appendChild(img);
+				let a =  document.createElement('a');
+				let gitAnchor =  document.createElement('a');
 
-}
+				let discordImg = document.createElement('img');
+				let gitImg = document.createElement('img');
 
-function changeBio()
-{
-let p = document.createElement('p');
-let div = document.getElementById('bio');
-let p_text = document.createTextNode('Edwin \n November 8, 1996 \n);
-}
+				let footer = document.getElementById('code');
 
-changeProfileImg();
-</script>
-</body>
+				discordImg.src = dev_imgs[0];
+				discordImg.width = 60;
+				gitImg.src = dev_imgs[1];
+				gitImg.width = 60;
+
+				a.href = "https://discord.gg/DZECfdJ";
+				a.alt = "Join me on Discord chat!";
+				a.target = "top";
+				gitAnchor.href = "https://github.com/softiodev/js";
+				gitAnchor.alt = "See the code on GitHub!";
+				gitAnchor.target = "top";
+
+				a.appendChild(discordImg);
+				gitAnchor.appendChild(gitImg);
+
+				footer.appendChild(a);
+				footer.appendChild(gitAnchor);
+			}
+			
+			main();
+		</script>
+	</body>
 </html>
